@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/animals">
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="1"
+        android:rowCount="2">
+        <ImageView
+            android:id="@+id/anim1"
+            android:layout_gravity="right"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:src="@drawable/anim1">
+
+        </ImageView>
+        <TextView
+            android:id="@+id/txtanim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#1B262C"
+            android:textSize="20dp"
+            android:gravity="right"
+            android:paddingRight="20dp"
+            android:text="Hoş Geldiniz"/>
+    </GridLayout>
+
+</LinearLayout>
