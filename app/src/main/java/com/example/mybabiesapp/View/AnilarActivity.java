@@ -18,8 +18,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import static com.example.mybabiesapp.View.AddEditActivity.EXTRA_ID;
+
 public class AnilarActivity extends AppCompatActivity {
-    Button btnIptal, btnKaydet,btnOku;
+    Button btnIptal, btnKaydet, btnOku;
     EditText txtAnilar;
     FileInputStream iStream;
     FileOutputStream oStream;
@@ -35,6 +37,7 @@ public class AnilarActivity extends AppCompatActivity {
         btnOku = findViewById(R.id.anioku);
         anilar = findViewById(R.id.anilar);
 
+
         btnIptal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,44 +48,47 @@ public class AnilarActivity extends AppCompatActivity {
         btnKaydet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    oStream = openFileOutput("dosya.txt", Context.MODE_APPEND);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-                try
-                {
-                    oStream.write(txtAnilar.getText().toString().getBytes());
-                    oStream.close();
-                    Toast.makeText(AnilarActivity.this, "Başarıyla dosyaya yazıldı.", Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                Intent intent = getIntent();
+                if (intent.hasExtra("id")) {
+                    try {
+                        oStream = openFileOutput("dosya.txt" + "id", Context.MODE_APPEND);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                    try {
+                        oStream.write(txtAnilar.getText().toString().getBytes());
+                        oStream.close();
+                        Toast.makeText(AnilarActivity.this, "Başarıyla dosyaya yazıldı.", Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
         btnOku.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int a = 65;
-                anilar.setText(Character.toString((char)a));
-                try{
-                    iStream = openFileInput("dosya.txt");
-                } catch(FileNotFoundException e){
-                    e.printStackTrace();
-                }
-                int x;
-                String okunanMetin = " ";
-                try{
-                    while((x=iStream.read())!=-1)
-                    {
-                        okunanMetin += Character.toString((char)x);
+                    int a = 65;
+                    anilar.setText(Character.toString((char) a));
+                    try {
+                        iStream = openFileInput("dosya.txt" + "id");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
                     }
-                    iStream.close();
-                }catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-                anilar.setText(okunanMetin);
+                    int x;
+                    String okunanMetin = " ";
+                    try {
+                        while ((x = iStream.read()) != -1) {
+                            okunanMetin += Character.toString((char) x);
+                        }
+                        iStream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    anilar.setText(okunanMetin);
+
+                /*
+                anilar.setText(intent.getStringExtra("id"));*/
             }
         });
 
