@@ -52,6 +52,7 @@ public class BabyProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(getApplicationContext(),DiaryActivity.class);
+                intent1.putExtra("id",id);
                 startActivity(intent1);
             }
         });

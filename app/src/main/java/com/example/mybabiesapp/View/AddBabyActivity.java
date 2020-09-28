@@ -107,7 +107,6 @@ public class AddBabyActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     private void pickImageFromGallery(){
@@ -115,7 +114,9 @@ public class AddBabyActivity extends AppCompatActivity {
         if(intent2.resolveActivity(getPackageManager()) != null){
             startActivityForResult(intent2,GALLERY_REQUEST_CODE);
         }
-        /*Intent intent2 = new Intent();
+        /*
+        Galeriden de seçtirebilirdik....
+        Intent intent2 = new Intent();
         intent2.setType("image/*");
         intent2.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent2,"resim sec"),GALLERY_REQUEST_CODE);*/

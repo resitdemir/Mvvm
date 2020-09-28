@@ -17,8 +17,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import static com.example.mybabiesapp.View.AddEditActivity.EXTRA_ID;
+import static com.example.mybabiesapp.View.MainActivity.currentId;
 
 public class AnilarActivity extends AppCompatActivity {
     Button btnIptal, btnKaydet, btnOku;
@@ -36,7 +35,8 @@ public class AnilarActivity extends AppCompatActivity {
         btnKaydet = findViewById(R.id.anikaydet);
         btnOku = findViewById(R.id.anioku);
         anilar = findViewById(R.id.anilar);
-
+        final Intent intent = getIntent();
+        final int id = currentId;
 
         btnIptal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,10 +48,10 @@ public class AnilarActivity extends AppCompatActivity {
         btnKaydet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
+
                 if (intent.hasExtra("id")) {
                     try {
-                        oStream = openFileOutput("dosya.txt" + "id", Context.MODE_APPEND);
+                        oStream = openFileOutput("dosya.txt" + id, Context.MODE_APPEND);
                     } catch (Exception e) {
                         System.out.println(e);
                     }
@@ -71,7 +71,7 @@ public class AnilarActivity extends AppCompatActivity {
                     int a = 65;
                     anilar.setText(Character.toString((char) a));
                     try {
-                        iStream = openFileInput("dosya.txt" + "id");
+                        iStream = openFileInput("dosya.txt" + id);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }

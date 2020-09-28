@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView image;
     TextView text;
     Button btnEdit;
+    public static int currentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(Baby baby) {
                 Intent intent2 = new Intent(MainActivity.this, BabyProfile.class);
                 intent2.putExtra(AddEditActivity.EXTRA_ID, baby.getId());
+                currentId = baby.getId();
                 intent2.putExtra(AddEditActivity.EXTRA_AD, baby.getAd());
                 intent2.putExtra(AddEditActivity.EXTRA_DOGUM_TARIHI, baby.getDogumTarihi());
                 intent2.putExtra(AddEditActivity.EXTRA_CINSIYET, baby.getCinsiet());
