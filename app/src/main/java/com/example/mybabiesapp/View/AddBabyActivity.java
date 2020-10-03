@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,15 +36,16 @@ import java.util.Calendar;
 public class AddBabyActivity extends AppCompatActivity {
     private EditText etAd;
     private String etdogumTarihi;
-    private EditText etcinsiet;
+    private String etcinsiet;
     private EditText etgebelikYasi;
     private EditText etiliskiler;
     private EditText etagirlik;
     private EditText etuzunluk;
     private EditText etkafaUzunluk;
-    private Button btniptal,btnkaydet,btnPick,btnSelectDate;
+    private Button btniptal,btnkaydet,btnPick,btnSelectDate,btn_result;
     private ImageView imageView;
     Bitmap bmpImage;
+    RadioGroup radioGroup;
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private static final int GALLERY_REQUEST_CODE = 123;
@@ -92,7 +94,7 @@ public class AddBabyActivity extends AppCompatActivity {
             private void saveNote() {
                 String ad = etAd.getText().toString();
                 String dogumTarihi = etdogumTarihi;
-                String cinsiyet = etcinsiet.getText().toString();
+                String cinsiyet = etcinsiet;
                 String gebelikYasi =etgebelikYasi.getText().toString();
                 String agirlik =etagirlik.getText().toString();
                 String uzunluk =etuzunluk.getText().toString();
@@ -143,6 +145,21 @@ public class AddBabyActivity extends AppCompatActivity {
                 mDisplayDate.setText(date);
             }
         };
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.radioButton){
+                    Toast.makeText(getApplicationContext(),"erkek" , Toast.LENGTH_SHORT).show();
+                    etcinsiet = "Erkek";
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"kız" , Toast.LENGTH_SHORT).show();
+                    etcinsiet = "Kız";
+                }
+            }
+        });
+
     }
 
     private void pickImageFromGallery(){
@@ -189,7 +206,6 @@ public class AddBabyActivity extends AppCompatActivity {
         etAd = findViewById(R.id.txtad);
         btnSelectDate = findViewById(R.id.selectDate);
         mDisplayDate = findViewById(R.id.dogumTarihi);
-        etcinsiet = findViewById(R.id.cinsiet);
         etgebelikYasi = findViewById(R.id.gebelikYasi);
         btniptal = findViewById(R.id.txtiptal);
         btnkaydet = findViewById(R.id.txtkaydet);
@@ -200,5 +216,6 @@ public class AddBabyActivity extends AppCompatActivity {
         imageView = findViewById(R.id.camera);
         btnPick = findViewById(R.id.pick_image);
         bmpImage = null;
+        radioGroup = findViewById(R.id.radioGroup);
     }
 }

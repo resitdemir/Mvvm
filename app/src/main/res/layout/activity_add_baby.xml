@@ -107,29 +107,29 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <GridLayout
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:layout_margin="10dp"
-                android:rowCount="1">
+                android:orientation="horizontal">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="Erkek" />
+                    <RadioButton
+                        android:id="@+id/radioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Erkek"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:layout_gravity="center"
-                    android:text="Kız" />
+                    <RadioButton
+                        android:id="@+id/radioButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kız"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-            </GridLayout>
+            </RadioGroup>
 
             <TextView
                 android:layout_width="wrap_content"
