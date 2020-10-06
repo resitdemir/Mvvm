@@ -111,6 +111,8 @@
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
                 android:orientation="horizontal">
 
                     <RadioButton
@@ -118,6 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Erkek"
+                        android:paddingLeft="5dp"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -126,6 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Kız"
+                        android:paddingLeft="5dp"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 

@@ -8,14 +8,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private BabyViewModel babyViewModel;
     public static final int ADD_BABY_REQUEST = 1;
     public static final int EDIT_BABY_REQUEST = 2;
-    ImageView image;
-    TextView text;
-    Button btnEdit;
     public static int currentId;
 
     @Override
@@ -57,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (babyViewModel.getAllBaby().getValue().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Bebek Yoktur", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Bebek Yoktur", Toast.LENGTH_SHORT).show();
                 } else {
                     babyViewModel.deleteAllBaby();
-                    Toast.makeText(MainActivity.this, "Bebekler Silindi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Bebekler Silindi", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -89,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 babyViewModel.delete(adapter.getBabyAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(MainActivity.this, "Bebek Silindi", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Bebek Silindi", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
 
@@ -146,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             Baby baby = new Baby(ad, dogumTarihi, cinsiyet, gebelikYasi, agirlik, uzunluk, kafaUzunluk, iliskiler,resimUr);
             babyViewModel.insert(baby);
 
-            Toast.makeText(this, "Bebek Kaydedildi", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bebek Kaydedildi", Toast.LENGTH_SHORT).show();
 
         }
         else if (requestCode == EDIT_BABY_REQUEST && resultCode == RESULT_OK) {
@@ -171,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Bebek güncellendi", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Bebek güncellenemedi", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bebek güncellenemedi", Toast.LENGTH_SHORT).show();
         }
     }
 }
