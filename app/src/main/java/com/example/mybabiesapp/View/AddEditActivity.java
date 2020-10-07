@@ -30,6 +30,7 @@ public class AddEditActivity extends AppCompatActivity {
     private EditText etkafaUzunluk;
     private Button btniptal, btnkaydet;
     private int id;
+    private String dgTarihi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class AddEditActivity extends AppCompatActivity {
         etiliskiler = findViewById(R.id.iliskiler);
         btniptal = findViewById(R.id.txtiptal2);
         btnkaydet = findViewById(R.id.txtdüzenle);
+        dgTarihi = etdogumTarihi.toString();
 
         btniptal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +76,7 @@ public class AddEditActivity extends AppCompatActivity {
             }
             private void saveNote() {
                 String ad = etAd.getText().toString();
-                String dogumTarihi = etdogumTarihi.getText().toString();
+                String dogumTarihi = dgTarihi;
                 String cinsiyet = etcinsiet.getText().toString();
                 String gebelikYasi = etgebelikYasi.getText().toString();
                 String agirlik = etagirlik.getText().toString();
