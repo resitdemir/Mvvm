@@ -9,7 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mybabiesapp.Helper.DataConverter;
 import com.example.mybabiesapp.R;
+
+import static com.example.mybabiesapp.View.AddBabyActivity.re;
 
 public class AddEditActivity extends AppCompatActivity {
 
@@ -76,7 +79,7 @@ public class AddEditActivity extends AppCompatActivity {
             }
             private void saveNote() {
                 String ad = etAd.getText().toString();
-                String dogumTarihi = dgTarihi;
+                String dogumTarihi = etdogumTarihi.getText().toString();
                 String cinsiyet = etcinsiet.getText().toString();
                 String gebelikYasi = etgebelikYasi.getText().toString();
                 String agirlik = etagirlik.getText().toString();
@@ -97,6 +100,7 @@ public class AddEditActivity extends AppCompatActivity {
                 data.putExtra(EXTRA_UZUNLUK, uzunluk);
                 data.putExtra(EXTRA_KAFAUZUNLUK, kafaUzunluk);
                 data.putExtra(EXTRA_ILISKILER, iliskiler);
+                data.putExtra("resId",re);
 
                 int id = getIntent().getIntExtra(EXTRA_ID, -1);
                 if (id != -1) {

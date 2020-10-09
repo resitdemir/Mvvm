@@ -31,6 +31,7 @@ import com.example.mybabiesapp.R;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.sql.Array;
 import java.util.Calendar;
 
 public class AddBabyActivity extends AppCompatActivity {
@@ -50,6 +51,8 @@ public class AddBabyActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private static final int GALLERY_REQUEST_CODE = 123;
     private static final int PERMISSION_REQUEST_CODE = 200;
+    public static byte[] re;
+    public static String dg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +118,7 @@ public class AddBabyActivity extends AppCompatActivity {
                 data.putExtra("uzunluk",uzunluk);
                 data.putExtra("kafaUzunluk",kafaUzunluk);
                 data.putExtra("iliskiler",iliskiler);
+                re = DataConverter.convertImage2ByteArray(bmpImage);
                 data.putExtra("resId", DataConverter.convertImage2ByteArray(bmpImage));
                 setResult(RESULT_OK,data);
                 finish();
@@ -142,6 +146,7 @@ public class AddBabyActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                 String date = month + "/" + dayOfMonth + "/" +year;
                 etdogumTarihi = date;
+                dg = date;
                 mDisplayDate.setText(date);
             }
         };
